@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <Head/>
-    <ButtonBar/>
+    <TicketArea/>
   </div>
 </template>
 
 <script>
 import Head from './components/Head.vue'
-import ButtonBar from './components/ButtonBar.vue'
+import TicketArea from './components/TicketArea.vue'
+
+
 export default {
   name: 'App',
   components: {
     Head,
-    ButtonBar
+    TicketArea
   }
 }
 </script>
