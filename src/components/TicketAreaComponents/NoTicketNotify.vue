@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p>There are no Tickets yet created. Click on the "+" Button to create one!</p>
+      <h1 class="text-4xl flex justify-center py-20">There are no Tickets created yet. Click on the "+" Button to create one!</h1>
   </div>
 </template>
 

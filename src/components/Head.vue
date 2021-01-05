@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <img alt="logo" src="../assets/logo.png">
+  <div class="flex justify-center">
+      <img alt="logo" src="../assets/logo.png">
   </div>
 </template>
 

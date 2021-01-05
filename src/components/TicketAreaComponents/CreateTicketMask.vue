@@ -1,9 +1,22 @@
 <template>
-<div>
-  <input v-model="curTitle" placeholder="title">
-  <input v-model="curContent" placeholder="content">
-  <button @click="closeButtonHandler($event)" id="close-button"></button>
-  <button @click="commitTicketHandler($event)" id="commit-button">Create Ticket</button>
+<div class="grid justify-center p-20">
+
+  <div>
+   <div class="mt-1 relative rounded-md shadow-sm">
+    <textarea v-model="curTitle" id="title" name="title" rows="1" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-96 sm:text-sm border-gray-300 rounded-md border-4 " placeholder="title"></textarea>
+  </div>
+  <div class="mt-1">
+     <textarea v-model="curContent" id="content" name="content" rows="10" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md border-4" placeholder="content"></textarea>
+  </div>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="px-0"></div>
+      <button @click="closeButtonHandler($event)" id="close-button" ></button>
+    <div class="px-0"></div>
+      <button @click="commitTicketHandler($event)" id="commit-button" class="border-8 bg-green-400 px-11">Create Ticket</button>  
+  </div>
+
 </div>
 </template>
 
@@ -16,6 +29,10 @@ data: function () {
     curTitle: '',
     curContent: '',
   }
+},
+
+props: {
+  nextTicketIndex: Number,
 },
 
 methods:{
@@ -33,6 +50,8 @@ methods:{
       { 
         title: this.curTitle,
         content: this.curContent,
+        id: this.nextTicketIndex,
+        isMarked: false,
       },
     );
   }
@@ -55,7 +74,7 @@ button {
     background-image: url( "../../assets/window-close-solid.svg" );
     background-size: 100px 130px;
     height: 134px;  
-    width: 104px;
+    width: 100px;
 }
 
 </style>

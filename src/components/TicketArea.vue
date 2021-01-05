@@ -5,10 +5,12 @@
     <ButtonBar
       :showCreateTicketMaskParent="showCreateTicketMask"
       @showCreateTicketMaskChild="createTicketMaskHandler"
+      @deleteAllMarkedTickets="deleteMarkedTickets"
     />
     <!-- If Mask to create a new ticket is open, do this-->
     <div v-if="showCreateTicketMask">
       <CreateTicketMask
+        :nextTicketIndex = this.curTicketIndex
         @closeButtonClick="createTicketMaskHandler"
         @newTicket="addTicket"
       />
@@ -20,15 +22,20 @@
     <ButtonBar
       :showCreateTicketMaskParent="showCreateTicketMask"
       @showCreateTicketMaskChild="createTicketMaskHandler"
+      @deleteAllMarkedTickets="deleteMarkedTickets"
     />
     <!-- If Mask to create a new ticket is open, do this-->
     <div v-if="showCreateTicketMask">
       <CreateTicketMask
+        :nextTicketIndex = this.curTicketIndex
         @closeButtonClick="createTicketMaskHandler"
         @newTicket="addTicket"
       />
     </div>
-    <TicketList v-bind:ticketList="tickets" />
+    <div v-else>
+      <TicketList v-bind:ticketList="tickets" />
+    </div>
+    
   </div>
 </template>
 
@@ -45,6 +52,7 @@ export default {
 
   data: function () {
     return {
+      curTicketIndex: 1,
       showCreateTicketMask: false,
       tickets: [],
     };
@@ -63,8 +71,20 @@ export default {
       } else {
         this.tickets.push(newTicket);
         this.createTicketMaskHandler();
+        this.curTicketIndex++;
       }
     },
+    deleteMarkedTickets(){
+      var i;
+      for(i = 0; i <= this.tickets.length; i++){
+        if(this.tickets[i].isMarked){
+          this.tickets.splice(i,1)
+        }
+      }
+      if(this.tickets[0].isMarked){
+        this.tickets.splice(0,1)
+      }
+    }
   },
 };
 </script>
