@@ -1,6 +1,5 @@
 <template>
   <div id="app" >
-
     <Head/>
     <TicketArea/>
   </div>
@@ -9,8 +8,6 @@
 <script>
 import Head from './components/Head.vue'
 import TicketArea from './components/TicketArea.vue'
-
-
 export default {
   name: 'App',
   components: {

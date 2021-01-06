@@ -1,7 +1,7 @@
 
 <template>
-  <!-- If no tickets are created, do this-->
-  <div v-if="this.tickets.length == 0 && !showCreateTicketMask">
+  <!-- If no tickets are created and the CreateTicketMask is not open, do this-->
+  <div v-if="this.tickets.length == 0 && showCreateTicketMask == false">
     <ButtonBar
       :showCreateTicketMaskParent="showCreateTicketMask"
       @showCreateTicketMaskChild="createTicketMaskHandler"
@@ -33,7 +33,7 @@
       />
     </div>
     <div v-else>
-      <TicketList v-bind:ticketList="tickets" />
+      <TicketList v-bind:ticketList="getTickets" />
     </div>
     
   </div>
@@ -85,6 +85,12 @@ export default {
         this.tickets.splice(0,1)
       }
     }
+  },
+
+  computed:{
+    getTickets(){
+      return this.tickets;
+    },
   },
 };
 </script>

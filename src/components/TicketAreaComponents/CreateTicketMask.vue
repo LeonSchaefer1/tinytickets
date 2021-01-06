@@ -11,10 +11,12 @@
   </div>
 
   <div class="flex justify-center">
-    <div class="px-0"></div>
+    <div class="px-0">
+      <button @click="commitTicketHandler($event)" id="commit-button" ></button>  
+    </div>
+        
+    <div class="px-5"></div>
       <button @click="closeButtonHandler($event)" id="close-button" ></button>
-    <div class="px-0"></div>
-      <button @click="commitTicketHandler($event)" id="commit-button" class="border-8 bg-green-400 px-11">Create Ticket</button>  
   </div>
 
 </div>
@@ -36,13 +38,7 @@ props: {
 },
 
 methods:{
-  closeButtonHandler(event){
-    event.preventDefault();
-    this.$emit(
-      'closeButtonClick',
-      true,
-    );
-  },
+
   commitTicketHandler(event){
     event.preventDefault();
     this.$emit(
@@ -54,7 +50,16 @@ methods:{
         isMarked: false,
       },
     );
-  }
+  },
+  
+  closeButtonHandler(event){
+    event.preventDefault();
+    this.$emit(
+      'closeButtonClick',
+      true,
+    );
+  },
+  
 }
 
 }
@@ -74,6 +79,13 @@ button {
     background-image: url( "../../assets/window-close-solid.svg" );
     background-size: 100px 130px;
     height: 134px;  
+    width: 100px;
+}
+
+#commit-button {
+    background-image: url( "../../assets/check-square-solid.svg" );
+    background-size: 100px 125px;
+    height: 130px;  
     width: 100px;
 }
 
