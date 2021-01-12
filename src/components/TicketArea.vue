@@ -66,7 +66,7 @@ export default {
       if (newTicket.title.length <= 5) {
         alert("Title should be at least 6 characters long");
       }
-      if (newTicket.content.length <= 15) {
+      else if (newTicket.content.length <= 15) {
         alert("Content should be at least 16 characters long");
       } else {
         this.tickets.push(newTicket);
