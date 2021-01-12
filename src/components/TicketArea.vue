@@ -79,10 +79,8 @@ export default {
       for(i = 0; i <= this.tickets.length; i++){
         if(this.tickets[i].isMarked){
           this.tickets.splice(i,1)
+          i--;
         }
-      }
-      if(this.tickets[0].isMarked){
-        this.tickets.splice(0,1)
       }
     }
   },
